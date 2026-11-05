@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151b22">
+  <title>安静 · 在游戏里拍一支 MV</title>
+  <style>:root{color-scheme:dark;--bg:#151b22;--panel:#1c242c;--ink:#e6e3da;--muted:#8c9da8;--line:#33404a;--warm:#d7ac70;--warm-bright:#efd1a1;--blue:#89a6ba}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 18% 0,#23313b 0,transparent 48%),var(--bg);color:var(--ink);font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}button,input{font:inherit}button,a,label{-webkit-tap-highlight-color:transparent}button,a.button,label.button{touch-action:manipulation}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,a:focus-visible,summary:focus-visible,canvas:focus-visible{outline:2px solid var(--warm);outline-offset:4px}a{color:inherit;text-decoration:none}main{max-width:1184px;margin:auto;padding:0 32px}.masthead{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff0b}.wordmark{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em}.mark{font-size:22px;color:var(--warm)}.edition{font-size:11px;letter-spacing:.15em;color:var(--muted)}.number{padding-left:12px;color:var(--warm)}.intro{display:flex;justify-content:space-between;align-items:flex-end;padding:36px 0 26px;gap:24px}.eyebrow{font-size:10px;font-weight:600;letter-spacing:.24em;color:var(--warm);margin:0 0 9px}h1{font-size:36px;letter-spacing:.16em;font-weight:500;line-height:1.35;margin:0}h1 span{font-size:13px;display:inline-block;margin-left:24px;color:#b9c2c6;letter-spacing:.1em;vertical-align:middle}.lede{color:#a5b3bc;font-size:12px;line-height:1.9;margin:0 0 2px}.studio{border:1px solid #39434b;background:#10171e;box-shadow:0 22px 60px #0003}.screen-wrap{overflow:hidden;aspect-ratio:16/9;background:#15212e}canvas{display:block;width:100%;height:100%;image-rendering:pixelated;outline:none}.status-row{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);min-height:39px}.status-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#91b499;margin-right:7px}.status-row.is-recording{color:#e5c9a6}.status-row.is-recording .status-dot{background:#d66d5b;box-shadow:0 0 0 3px #d66d5b14}.controls-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-top:1px solid #ffffff08;gap:12px}.key-guide{display:flex;gap:18px;white-space:nowrap;color:#b8c4cb;font-size:11px}.key-guide>span{display:flex;align-items:center;gap:5px}kbd{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:21px;border:1px solid #3c4953;border-bottom-width:2px;border-radius:3px;font:11px/1 monospace;color:#d9dfe0;background:#212b33}#hint{font-size:11px;color:var(--muted);margin:0}.desk{display:grid;grid-template-columns:1.4fr 1fr;gap:0;margin-top:22px;border:1px solid var(--line);background:#1b242b}.music-block,.record-block{padding:23px 25px}.record-block{border-left:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start}.section-index{display:block;color:#7f919e;font-size:10px;letter-spacing:.12em;margin-bottom:17px}.track-row{display:flex;align-items:center;gap:13px}.track-icon{height:40px;width:40px;flex-shrink:0;display:grid;place-items:center;background:#d7ac7012;color:var(--warm);border:1px solid #d7ac7026;font-size:23px}.track-info{min-width:0;flex:1}.track-info strong{display:block;font-size:12px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:270px}.track-info span{display:block;color:var(--muted);font-size:10px;margin-top:3px}.button{border:1px solid var(--line);border-radius:3px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:9px 15px;line-height:1.5;font-size:12px;white-space:nowrap;cursor:pointer;transition:background .15s,border-color .15s}.primary{background:var(--warm);color:#242321;border-color:var(--warm);font-weight:550}.primary:hover:not(:disabled){background:var(--warm-bright);border-color:var(--warm-bright)}.secondary{background:#202c35;color:#c3cdd3}.secondary:hover:not(:disabled){background:#2c3943;border-color:#68747d}.file-button{position:relative;overflow:hidden}.file-button input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}.file-button:focus-within{outline:2px solid var(--warm);outline-offset:3px}.record-dot{display:block;width:8px;height:8px;border-radius:50%;background:#64513d}.record-block p{font-size:11px;line-height:1.8;color:var(--muted);margin:12px 0 0}.record-block .button{width:100%}details{font-size:11px;color:var(--muted)}summary{cursor:pointer;user-select:none}#clip-settings{margin-top:19px}#clip-summary{font-size:10px;margin-left:10px;color:#748692}.clip-inputs{display:flex;flex-wrap:wrap;gap:10px;padding-top:12px;align-items:center}.clip-inputs input{width:67px;border:1px solid #41505b;background:#111c24;border-radius:3px;padding:3px 6px;color:#d5dfe2;font-size:11px}#clip-note{font-size:10px}.review{margin-top:32px;padding:25px;border:1px solid #576052;background:#202b2c}.review-heading{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:18px}h2{font-size:23px;font-weight:450;margin:0;letter-spacing:.04em}#review-meta{font-size:11px;color:var(--muted)}#playback{display:block;width:100%;aspect-ratio:16/9;background:#10171e;border:1px solid #3c4a4c}.review-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px}.text-button{font-size:11px;color:#c1c8b6;text-decoration:underline;text-underline-offset:4px;margin-left:auto}#review-note{font-size:11px;color:#9aa9a4;margin-bottom:0}.replay-import{padding:20px 0 22px}.replay-import p{margin-top:12px;font-size:11px}.replay-import .button{font-size:11px;margin-right:8px}#replay-info{font-size:10px}footer{border-top:1px solid #ffffff0b;display:flex;justify-content:space-between;gap:16px;padding:23px 0 32px;font-size:10px;color:#6e838e}.touch-controls{display:none;padding:10px 14px;gap:8px;border-top:1px solid #ffffff08}.touch-controls button{flex:1;background:#263540;color:#d5dfdf;border:1px solid #4c5d68;padding:8px;touch-action:none;user-select:none}[hidden]{display:none!important}.error{color:#e5a494!important}@media(max-width:800px){main{padding:0 18px}.masthead{height:63px}.intro{padding:25px 0 20px}.lede{font-size:11px}h1{font-size:30px}h1 span{display:block;margin:8px 0 0;font-size:11px}.controls-row{align-items:flex-start;flex-direction:column;gap:8px}.desk{grid-template-columns:1fr}.record-block{border-left:0;border-top:1px solid var(--line)}.music-block,.record-block{padding:20px}.record-block p br{display:none}.section-index{margin-bottom:13px}.touch-controls{display:flex}.review{padding:17px}.text-button{margin-left:0}.review-heading{align-items:flex-start;gap:10px;flex-direction:column}footer{flex-direction:column;gap:5px}.track-info strong{max-width:220px}}@media(max-width:480px){main{padding:0 12px}.intro{gap:12px}.lede{max-width:140px;font-size:10px}.edition{font-size:9px}.wordmark{font-size:11px}.track-row{gap:8px}.track-icon{width:32px;height:36px}.track-info strong{max-width:160px}.track-info span{font-size:9px}.file-button{padding:7px 9px;font-size:10px}.key-guide{gap:11px}.music-block,.record-block{padding:17px}.review-actions .button{font-size:11px;padding:8px 10px}}
+</style>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <a class="wordmark" href="./" aria-label="回到首页"><span class="mark" aria-hidden="true">▦</span> 一首歌，一款游戏</a>
+      <span class="edition">可玩 MV 实验 <span class="number">01</span></span>
+    </header>
+    <section class="intro">
+      <div><p class="eyebrow">A ROOM. A SONG. YOUR TAKE.</p><h1>安静<span>还亮着灯的琴房</span></h1></div>
+      <p class="lede">坐一会儿，走到窗边，或再折回来。<br>没有规定动作，这段时间属于你。</p>
+    </section>
+    <section class="studio" aria-label="游戏与录制">
+      <div class="screen-wrap">
+        <canvas id="game" width="1920" height="1080" tabindex="0" aria-label="可操作的像素琴房，左右方向键行走，E 互动，C 切换镜头"></canvas>
+      </div>
+      <div class="status-row"><span id="status" role="status"><span class="status-dot"></span>琴房已开放 · 可以先走走</span><span id="clock">自由探索</span></div>
+      <div class="controls-row">
+        <div class="key-guide"><span><kbd>←</kbd><kbd>→</kbd> 行走</span><span><kbd>E</kbd> 坐下 / 互动</span><span><kbd>C</kbd> 镜头</span></div>
+        <p id="hint">靠近琴凳可以坐下，窗边的灯可以开关。</p>
+      </div>
+      <div class="touch-controls" aria-label="触控操作"><button data-key="ArrowLeft" aria-label="向左走">←</button><button data-key="ArrowRight" aria-label="向右走">→</button><button data-key="KeyE">互动</button><button data-key="KeyC">镜头</button></div>
+    </section>
+    <section class="desk" aria-label="选择音乐与开始录制">
+      <div class="music-block">
+        <span class="section-index">01 / 音乐</span>
+        <div class="track-row"><div class="track-icon" aria-hidden="true">♫</div><div class="track-info"><strong id="track-name">载入你的音乐</strong><span id="track-details">文件只在你的浏览器里使用，不会上传。</span></div><label class="button secondary file-button" id="audio-label">选择音频<input id="audio-file" type="file" accept="audio/*,.mp3,.m4a,.wav,.ogg,.flac,.aac"></label></div>
+        <details id="clip-settings"><summary>选取片段 <span id="clip-summary">默认播放整段音频</span></summary><div class="clip-inputs"><label>从 <input id="clip-start" type="number" min="0" step="0.1" value="0" disabled> 秒开始</label><label>到 <input id="clip-end" type="number" min="0.1" step="0.1" value="30" disabled> 秒结束</label><span id="clip-note">也可以使用整首歌。</span></div></details>
+      </div>
+      <div class="record-block"><span class="section-index">02 / 你的表演</span><button id="start-recording" class="button primary" disabled><span class="record-dot" aria-hidden="true"></span>开始，录一版自己的 MV</button><button id="stop-recording" class="button secondary" hidden>结束本次录制</button><p>音乐和录像一起开始。结束后回看、保存，<br>也可以重新来一遍。</p></div>
+    </section>
+    <section id="review" class="review" hidden aria-label="回看你的 MV">
+      <div class="review-heading"><div><p class="eyebrow">YOUR TAKE</p><h2 id="review-title">这是你的版本。</h2></div><span id="review-meta"></span></div>
+      <video id="playback" controls playsinline preload="metadata"></video>
+      <div class="review-actions"><a id="download-video" class="button primary" download="安静-我的MV.webm">保存 MV</a><button id="record-again" class="button secondary">重新录制</button><button id="replay-take" class="button secondary">回放操作并重拍</button><a id="download-log" class="text-button" download="安静-操作记录.json">保存操作记录</a></div>
+      <p id="review-note">录像只有游戏画面与音乐，操作面板不会出现在画面里。</p>
+    </section>
+    <details class="replay-import"><summary>已有操作记录？载入并重拍</summary><p>使用同一音频、同一游戏版本，重现之前的表演。音乐不会包含在操作记录内。</p><label class="button secondary file-button">选择操作记录<input id="replay-file" type="file" accept="application/json,.json"></label><button id="run-imported-replay" class="button secondary" disabled>重拍载入的操作</button><span id="replay-info"></span></details>
+    <footer><span>一间琴房。无限种停留的方式。</span><span>方向键 / A、D · E / 空格互动 · C 切换镜头</span></footer>
+  </main>
+  <script type="module">
+const {drawScene, ART_VERSION}=(()=>{
+/* Original pixel art for the playable Silence study, 2026-11-06.
+   No downloaded artwork or pre-rendered film. All animations are baked whole-body sprites.
+   The renderer reads game state only. Native coordinates: 480 x 270. */
+const ART_VERSION = 'anjing-room-1.1.0';
+const W=480,H=270, FOOT=216, FRAME_W=40, FRAME_H=58;
+const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+const make=(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;return c;};
+const R=(g,x,y,w,h,c)=>{g.fillStyle=c;g.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h));};
+const poly=(g,p,c)=>{g.fillStyle=c;g.beginPath();p.forEach(([x,y],i)=>i?g.lineTo(x,y):g.moveTo(x,y));g.closePath();g.fill();};
+const line=(g,p,c,width=1)=>{g.strokeStyle=c;g.lineWidth=width;g.lineJoin='miter';g.beginPath();p.forEach(([x,y],i)=>i?g.lineTo(x+.5,y+.5):g.moveTo(x+.5,y+.5));g.stroke();};
+// Tiny deterministic hash. Texture is baked exactly once, never randomised per frame.
+const noise=(x,y,s=1)=>{let n=Math.imul(x+997*s,374761393)^Math.imul(y+91,668265263);n=Math.imul(n^(n>>>13),1274126177);return ((n^(n>>>16))>>>0)/4294967295;};
+const P={ink:'#1d2634',floor:'#60514e',wall:'#6b6063',blue:'#34495d',wood:'#563f39',warm:'#d4ae76',skin:'#e2b28c',skinShade:'#af7e6e',jacket:'#35495b',jacketLight:'#52677a',jacketDark:'#243547',shirt:'#c9c8b8',pants:'#29323f',shoe:'#171f2d',hair:'#242833',hairLight:'#41434a'};
+let layers, sprites;
+
+function wall(g){
+ R(g,0,0,W,188,'#5b555f');
+ for(let y=0;y<188;y+=16)R(g,0,y,W,16,['#625a63','#675e65','#6c6166','#706368','#75666a','#79696b','#7b6b6c','#796b6a','#76696a','#716568','#6b6065','#625b62'][Math.floor(y/16)]);
+ for(let y=8;y<186;y+=3)for(let x=0;x<W;x+=4)if(noise(x,y)<.12)R(g,x,y,1,1,'#807174');
+ R(g,0,1,W,8,'#302f3c');R(g,0,9,W,3,'#958380');R(g,0,12,W,3,'#4d4652');R(g,0,15,W,2,'#827276');
+ // Scuffed skirting and vertical room edges.
+ R(g,0,177,W,3,'#a18b80');R(g,0,180,W,12,'#443e48');R(g,0,182,W,2,'#63535a');R(g,0,191,W,2,'#242b36');
+ R(g,0,17,13,163,'#4c4655');R(g,13,17,3,163,'#8a7577');
+ R(g,462,17,18,163,'#484450');R(g,460,17,2,163,'#877374');
+ // Fixed dado seams and worn marks, not frame noise.
+ for(let x=28;x<460;x+=46){R(g,x,151,1,25,'#645862');R(g,x+2,152,1,24,'#8a7372');}
+}
+function cityWindow(g){
+ // Deep inset. Three large panes provide a quiet dark field behind the lamp.
+ R(g,239,28,199,148,'#3d3541');R(g,243,30,192,143,'#a18c80');R(g,247,34,184,135,'#2c3448');
+ R(g,252,38,174,125,'#28425b');
+ for(let y=40;y<164;y+=10)R(g,252,y,174,10,['#263c55','#29435e','#2b4964','#32506a','#385872','#41617b','#48667d','#4c6d80','#557487','#5e7d8c','#698593','#728e99','#78949c'][Math.floor((y-40)/10)]);
+ // Muted moon, crisp pixel staircase.
+ poly(g,[[393,46],[400,46],[400,49],[404,49],[404,57],[401,57],[401,61],[393,61],[393,58],[390,58],[390,49],[393,49]],'#b4bbac');
+ R(g,398,47,3,3,'#d3d1b4');R(g,391,53,3,5,'#9aa9a5');
+ [[266,57],[282,47],[302,63],[324,50],[375,72],[417,68],[350,45],[284,78]].forEach(([x,y])=>R(g,x,y,1,1,'#9aafba'));
+ // Distant river/skyline. No image sampled or cloned.
+ for(let i=0;i<18;i++){let x=252+i*10,h=10+Math.floor(noise(i,3)*31);R(g,x,124-h,9,h,'#3e596e');R(g,x+2,122-h,3,2,'#49667b');}
+ R(g,252,126,174,37,'#466776');
+ for(let i=0;i<13;i++){let x=254+i*14,h=15+Math.floor(noise(i,9)*35);R(g,x,143-h,12,h,'#304c61');R(g,x,142-h,12,1,'#77909a');for(let a=0;a<2;a++)for(let b=0;b<4;b++)if(noise(i,a*10+b)<.48)R(g,x+3+a*5,147-h+b*7,2,3,b%2?'#8e9c97':'#b0a483');}
+ R(g,252,146,174,17,'#527381');
+ for(let i=0;i<24;i++)R(g,254+Math.floor(noise(i,52)*168),148+Math.floor(noise(i,63)*13),2+Math.floor(noise(i,1)*7),1,i%3?'#6c8a93':'#aba68a');
+ // Glass reflections are sparse diagonal pixel staircases.
+ for(let j=0;j<15;j++){R(g,261+j*3,49+j*5,2,3,'#526a7a');R(g,336+j*3,47+j*5,1,3,'#52697b');}
+ R(g,247,35,6,134,'#4e4651');R(g,252,35,2,134,'#8f7f77');R(g,308,35,7,134,'#4c4651');R(g,310,35,2,134,'#a38e7c');R(g,366,35,7,134,'#4c4651');R(g,368,35,2,134,'#a38e7c');R(g,425,35,6,134,'#4c4651');
+ R(g,250,106,179,6,'#49434c');R(g,251,107,177,2,'#9a8779');
+ R(g,243,166,193,5,'#b09a83');R(g,240,171,198,5,'#51454d');R(g,247,176,185,3,'#8e776e');
+ // Tied velvet curtains, static graceful folds.
+ poly(g,[[231,28],[251,28],[253,63],[250,106],[242,131],[247,163],[237,173],[230,171]],'#4a4d5c');
+ poly(g,[[233,30],[239,30],[241,102],[236,134],[241,168],[235,170]],'#66606b');
+ line(g,[[247,31],[246,90],[239,132],[244,164]],'#79717a',2);R(g,233,126,12,4,'#b29575');
+ poly(g,[[428,28],[446,28],[448,171],[437,174],[433,161],[438,130],[429,100]],'#4d4d5c');
+ poly(g,[[439,31],[443,31],[445,164],[441,167],[438,130],[435,104]],'#6b6570');R(g,434,126,12,4,'#b29575');
+ R(g,226,24,224,3,'#322f3b');R(g,228,22,220,2,'#aa8d74');
+}
+function floor(g){
+ R(g,0,193,W,77,'#594b4d');
+ for(let row=0;row<7;row++){
+ const y=193+row*11;R(g,0,y,W,10,['#6d5a54','#735c52','#755e53','#705950','#66524c','#604e4c','#57494a'][row]);
+ R(g,0,y,480,1,'#3d3a41');R(g,0,y+1,480,1,'#8a6c59');
+ for(let x=(row%2)*39-20;x<480;x+=79){R(g,x,y,1,11,'#3e3940');R(g,x+2,y+4,42,1,'#806350');R(g,x+16,y+7,25,1,'#5f4b46');for(let j=0;j<3;j++)if(noise(x,j+row)<.6)R(g,x+8+j*16,y+8,4,1,'#947058');}
+ }
+ // Long window light crossing the floor, following an actual projection.
+ poly(g,[[250,193],[426,193],[463,239],[211,239]],'#777370');
+ poly(g,[[255,195],[307,195],[294,229],[225,229]],'#8c8b7f');
+ poly(g,[[316,195],[366,195],[375,229],[307,229]],'#8a8b80');
+ poly(g,[[376,195],[422,195],[451,229],[389,229]],'#85867e');
+ for(let y=198;y<234;y+=11)R(g,216,y,244,1,'#625d5c');
+ // Rug underneath the piano and long stool.
+ poly(g,[[78,195],[217,195],[235,225],[60,225]],'#3d4854');
+ poly(g,[[82,198],[215,198],[229,222],[66,222]],'#8a736b');
+ poly(g,[[87,200],[211,200],[224,220],[72,220]],'#55515b');
+ for(let x=83;x<216;x+=13){R(g,x,203,5,1,'#958073');R(g,x-3,216,5,1,'#958073');}
+ line(g,[[84,206],[108,215],[130,206],[153,215],[176,206],[199,215],[217,209]],'#6d6970');
+ for(let x=66;x<234;x+=4)R(g,x,225,1,3,'#8c776b');
+}
+function shelves(g){
+ // Wall-mounted records and framed miniature still lifes.
+ R(g,29,46,39,49,'#3e3541');R(g,31,48,35,45,'#b19679');R(g,34,51,29,39,'#413f4d');
+ R(g,39,56,18,25,'#817370');R(g,41,58,14,20,'#b69a7d');poly(g,[[42,75],[47,65],[51,69],[55,61],[55,77]],'#58676c');R(g,40,82,17,2,'#a28c79');
+ R(g,83,38,112,5,'#3d3541');R(g,82,35,114,3,'#a68c74');
+ const cols=['#394e60','#a58b73','#755b60','#8d8c83','#506570','#9b735d'];
+ for(let i=0;i<12;i++){const x=88+i*7,h=17+Math.floor(noise(i,7)*11);R(g,x,35-h,5,h,cols[i%6]);R(g,x+1,36-h,1,h-3,'#b5a58e');R(g,x+1,30,3,1,'#373642');}
+ R(g,180,20,9,15,'#3c424b');R(g,182,22,5,8,'#b39b7a');
+ // Small record cabinet at room left.
+ R(g,24,143,43,51,'#3d3842');R(g,26,146,39,45,'#604b46');R(g,27,148,37,2,'#9b785c');
+ R(g,29,154,33,15,'#292c37');for(let i=0;i<12;i++){R(g,30+i*2,156,1,12,cols[i%6]);}
+ R(g,29,173,33,14,'#75584b');R(g,42,177,8,2,'#b69a72');R(g,27,194,3,7,'#292c37');R(g,61,194,3,7,'#292c37');
+ // Turntable, no brand/text.
+ R(g,25,136,41,8,'#9a7962');R(g,28,137,35,4,'#3a3b46');R(g,32,136,18,5,'#242c38');R(g,37,137,8,3,'#69737a');R(g,40,138,2,1,'#d7b681');line(g,[[60,135],[56,136],[50,139]],'#b8aa8d');
+}
+function piano(g){
+ // Full upright piano, with carved feet and a real keyboard ledge.
+ R(g,81,119,126,71,'#2a2d37');R(g,84,122,120,63,'#51423f');R(g,86,123,116,2,'#9b7555');
+ R(g,89,129,110,26,'#342e35');R(g,92,132,104,19,'#674d3f');R(g,95,134,98,2,'#85664d');
+ R(g,92,150,104,1,'#ab855b');R(g,136,140,15,1,'#bd976a');R(g,139,142,9,1,'#87694e');
+ R(g,79,117,130,4,'#a17c5b');R(g,82,115,124,2,'#5a4540');R(g,82,119,124,2,'#2b2c36');
+ // A small score with abstract marks, never fabricated text.
+ R(g,125,102,36,16,'#3c343b');poly(g,[[126,103],[142,106],[143,118],[126,115]],'#c5b79a');poly(g,[[144,106],[159,102],[159,115],[144,118]],'#e0cdab');
+ for(let y=108;y<115;y+=3){R(g,130,y,10,1,'#8c8478');R(g,147,y-1,9,1,'#9d907a');}R(g,141,106,2,12,'#ad9f89');
+ // Piano top still life: photo without face and a single ceramic cup.
+ R(g,89,100,15,17,'#342e34');R(g,91,102,11,13,'#a28a71');R(g,93,104,7,9,'#667476');R(g,96,106,2,4,'#c1b091');
+ R(g,182,109,11,7,'#b4c0b3');R(g,183,109,9,1,'#d6d8bd');R(g,192,110,3,4,'#7f9991');R(g,193,111,1,2,'#534740');
+ R(g,82,155,124,5,'#aa825b');R(g,80,160,128,8,'#242833');R(g,83,160,122,6,'#d2c7a7');
+ for(let x=84;x<204;x+=4){R(g,x,161,1,5,'#827c74');}
+ for(let k=0;k<30;k++){if(![2,6].includes(k%7))R(g,85+k*4,160,2,4,'#252b37');}
+ R(g,79,168,130,4,'#71523f');R(g,80,172,128,3,'#a07b54');
+ R(g,86,175,7,23,'#342d34');R(g,88,176,2,21,'#89664c');R(g,195,175,7,23,'#342d34');R(g,196,176,2,21,'#89664c');
+ R(g,96,178,95,17,'#473b3a');R(g,100,179,86,2,'#614a40');R(g,136,194,22,3,'#272b34');R(g,140,195,3,5,'#b69b67');R(g,151,195,3,5,'#b69b67');
+ R(g,83,198,13,3,'#242a34');R(g,193,198,11,3,'#242a34');
+}
+function bench(g){
+ R(g,148,202,60,5,'#282c36');R(g,150,200,56,3,'#826152');R(g,153,199,50,2,'#a17c65');R(g,151,206,4,10,'#302b34');R(g,202,206,4,10,'#302b34');R(g,155,208,47,2,'#5b443e');
+ R(g,151,214,7,2,'#252b35');R(g,200,214,7,2,'#252b35');
+ // The right half is deliberately and visibly empty.
+ R(g,185,201,12,1,'#b08d72');
+}
+function cello(g){
+ // Sleeping cello in the corner. Fixed peg and neck; no individually wobbling parts.
+ R(g,222,133,3,56,'#322d35');R(g,222,132,4,4,'#ad7f57');R(g,219,135,8,2,'#6d483c');
+ poly(g,[[219,151],[226,151],[230,157],[229,163],[226,167],[230,170],[231,180],[227,188],[219,189],[213,182],[214,171],[217,166],[213,161],[215,155]],'#322e36');
+ poly(g,[[219,153],[225,153],[228,158],[226,163],[222,167],[227,172],[228,180],[225,185],[219,186],[216,181],[217,172],[220,166],[216,160]],'#956647');
+ poly(g,[[220,154],[223,154],[225,159],[222,165],[220,170],[220,184],[218,181],[219,170],[221,164],[218,160]],'#bd8959');
+ R(g,222,137,2,43,'#443338');R(g,222,179,2,6,'#c2aa75');R(g,220,175,7,1,'#c9b18a');R(g,221,187,2,12,'#b4a28a');R(g,219,199,7,2,'#252d38');
+ R(g,216,174,1,5,'#3b3036');R(g,227,174,1,5,'#3b3036');line(g,[[233,144],[234,191]],'#c6b08b');
+}
+function lamp(g,on){
+ // Switch is reachable from player anchor x360, y216.
+ R(g,365,163,3,46,'#3a333a');R(g,366,162,1,45,on?'#b69b6e':'#79716c');
+ R(g,357,209,18,3,'#282d38');R(g,361,207,10,2,'#77614f');
+ poly(g,[[354,143],[378,143],[386,164],[346,164]],'#302f3a');
+ poly(g,[[355,142],[377,142],[384,162],[348,162]],on?'#dec08a':'#8b8178');
+ poly(g,[[355,143],[360,143],[356,161],[349,161]],on?'#ae8b69':'#716a68');
+ poly(g,[[363,143],[368,143],[371,161],[359,161]],on?'#f3d9a0':'#a09a86');
+ R(g,347,162,38,2,on?'#f1d79c':'#a09882');R(g,355,140,23,2,on?'#c7a77a':'#84766c');
+ R(g,367,171,1,13,'#b29670');R(g,366,183,3,3,on?'#eed6a5':'#b7a588');
+}
+function plant(g,x,y){
+ line(g,[[x,y],[x-1,y-19],[x-7,y-32]],'#3b5353',2);line(g,[[x-1,y-9],[x+9,y-26]],'#3b5353',2);line(g,[[x,y-3],[x+15,y-13]],'#3b5353',2);
+ const leaves=[[x-13,y-33,11,5],[x-9,y-28,13,6],[x+4,y-27,13,5],[x+8,y-21,10,5],[x-13,y-17,13,5],[x+9,y-14,13,5],[x-5,y-23,8,4]];
+ leaves.forEach(([a,b,w,h],i)=>{poly(g,[[a,b+2],[a+3,b],[a+w-2,b],[a+w,b+2],[a+w-3,b+h],[a+2,b+h-1]],i%2?'#687b70':'#4b645e');R(g,a+3,b+2,w-5,1,'#84907b');});
+ R(g,x-10,y,21,4,'#a58267');poly(g,[[x-9,y+4],[x+10,y+4],[x+7,y+20],[x-6,y+20]],'#7d5e50');R(g,x-6,y+5,3,13,'#b08768');R(g,x-8,y+20,17,2,'#34343d');
+}
+function details(g){
+ plant(g,414,183);
+ // Quiet radiator below the window and desk not in the walking plane.
+ R(g,272,179,55,20,'#504b51');for(let x=275;x<325;x+=6){R(g,x,180,4,18,'#9a9180');R(g,x,181,1,16,'#b5aa91');R(g,x+3,181,1,16,'#665e5c');}
+ R(g,270,180,3,3,'#bdab8c');R(g,273,199,4,4,'#3c3b44');R(g,322,199,4,4,'#3c3b44');
+ // Book and folded shawl on the sill, a remnant rather than a scripted clue.
+ R(g,279,160,22,5,'#9e7761');R(g,280,161,20,2,'#d1b993');R(g,285,157,21,3,'#526674');R(g,286,158,19,1,'#b4b7a1');
+ R(g,381,158,24,8,'#8d817c');for(let x=384;x<403;x+=4)R(g,x,159,1,7,'#b7a28b');R(g,399,166,5,9,'#8d817c');
+ // Dark near corners, adding depth without masking walking feet.
+ R(g,0,229,17,41,'#222d39');R(g,3,224,10,7,'#39434b');poly(g,[[0,218],[8,204],[13,220],[18,231],[0,232]],'#3c5153');
+ R(g,459,232,21,38,'#29313c');R(g,464,227,16,6,'#4e484e');
+}
+function light(g,on){
+ // Pixel-dithered soft pool. Painted with cells, not a blurred digital gradient.
+ if(on){
+  g.save();g.globalCompositeOperation='screen';
+  for(let y=30;y<239;y+=2)for(let x=285;x<449;x+=2){const d=Math.hypot((x-367)/1.05,(y-163)/1.3);let a=clamp((96-d)/96,0,1)*.18;if(a>0){g.globalAlpha=a;R(g,x,y,2,2,noise(x,y,8)<.5?'#b88950':'#d4a96b');}}
+  g.globalAlpha=.15;poly(g,[[350,165],[384,165],[412,222],[321,222]],'#d6a56b');g.restore();
+ }else{
+  g.save();g.globalAlpha=.16;R(g,0,17,W,227,'#183046');g.restore();
+ }
+ // Bottom is intentionally calm for the film caption layer.
+ for(let y=239;y<270;y++) {g.save();g.globalAlpha=(y-239)/31*.45;R(g,0,y,W,1,'#111e2c');g.restore();}
+}
+function buildBackground(on){const c=make(W,H),g=c.getContext('2d');g.imageSmoothingEnabled=false;wall(g);cityWindow(g);floor(g);shelves(g);piano(g);cello(g);details(g);lamp(g,on);light(g,on);return c;}
+
+// Whole-body frames. The same pixel head and costume are redrawn into each atlas cell.
+function bodyFrame(g,kind,index){
+ const sit=kind==='sitting'?1:kind==='sitDown'?index/3:kind==='standUp'?1-index/3:0;
+ const walking=kind==='walk',phase=walking?index*Math.PI/4:0;
+ const lift=walking&&[1,2,5,6].includes(index)?-1:0;
+ const dy=Math.round(sit*6)+lift;
+ const hx=14,hy=7+dy;
+ const switcher=kind==='switch'?Math.min(1,index/2):0;
+ // Shadow is not baked here: sprite remains reusable on transparent background.
+ // Far arm behind torso.
+ poly(g,[[16,22+dy],[13,24+dy],[12+(walking?Math.round(Math.sin(phase)*3):0),36+dy],[16,37+dy],[18,26+dy]],P.jacketDark);
+ // Legs. Walk positions come from foot-strike poses, using the same waist/volume.
+ if(sit>.5){
+  poly(g,[[17,36+dy],[29,36+dy],[31,40+dy],[29,42+dy],[23,42+dy],[23,51],[19,51],[18,42+dy],[16,41+dy]],P.pants);
+  R(g,18,50,5,4,P.shoe);R(g,20,53,7,2,P.shoe);R(g,19,53,7,1,'#707678');
+  poly(g,[[22,36+dy],[33,36+dy],[34,40+dy],[31,43+dy],[28,50],[24,50],[26,41+dy],[22,41+dy]],'#364251');
+  R(g,24,50,5,4,P.shoe);R(g,26,53,8,2,P.shoe);R(g,27,53,6,1,'#84867f');
+ }else if(walking){
+  const dx=Math.round(Math.sin(phase)*6),up=Math.round(Math.max(0,Math.cos(phase))*3),up2=Math.round(Math.max(0,-Math.cos(phase))*3);
+  poly(g,[[17,35+dy],[21,35+dy],[21+dx,43],[20+dx,51-up],[16+dx,51-up],[16+dx,44],[16,39+dy]],'#222d3c');
+  R(g,15+dx,51-up,6,3,P.shoe);R(g,18+dx,53-up,5,2,P.shoe);R(g,18+dx,53-up,5,1,'#5a6471');
+  poly(g,[[22,35+dy],[26,35+dy],[26-dx,43],[25-dx,51-up2],[21-dx,51-up2],[22-dx,44],[21,39+dy]],'#3a4554');
+  R(g,20-dx,51-up2,6,3,P.shoe);R(g,23-dx,53-up2,6,2,P.shoe);R(g,23-dx,53-up2,5,1,'#7d817e');
+ }else{
+  R(g,17,35+dy,5,17-dy,P.pants);R(g,23,35+dy,5,17-dy,'#394350');R(g,19,38+dy,1,12-dy,'#495461');R(g,25,39+dy,1,12-dy,'#58606a');
+  R(g,16,51,6,4,P.shoe);R(g,18,53,7,2,P.shoe);R(g,23,51,6,4,P.shoe);R(g,25,53,7,2,P.shoe);R(g,26,53,5,1,'#787d7b');
+ }
+ // Jacket silhouette, rounded shoulders, open light shirt.
+ poly(g,[[17,21+dy],[24,21+dy],[28,25+dy],[28,37+dy],[24,39+dy],[16,38+dy],[14,34+dy],[14,25+dy]],P.jacket);
+ R(g,16,24+dy,3,12,P.jacketLight);R(g,15,27+dy,1,9,'#627485');
+ poly(g,[[21,22+dy],[25,23+dy],[24,35+dy],[20,35+dy]],P.shirt);
+ poly(g,[[19,22+dy],[22,22+dy],[20,28+dy],[18,25+dy]],'#697a85');
+ R(g,25,27+dy,2,9,P.jacketDark);R(g,16,37+dy,10,2,P.jacketDark);R(g,17,34+dy,3,1,'#879096');
+ // Neck and face, never independently scaled or rotated.
+ R(g,20,19+dy,5,5,P.skinShade);R(g,22,19+dy,3,4,P.skin);
+ poly(g,[[hx+2,hy+2],[hx+11,hy+2],[hx+13,hy+5],[hx+13,hy+9],[hx+15,hy+10],[hx+13,hy+11],[hx+13,hy+14],[hx+10,hy+16],[hx+4,hy+15],[hx+1,hy+10]],P.skinShade);
+ poly(g,[[hx+5,hy+3],[hx+11,hy+3],[hx+12,hy+6],[hx+12,hy+10],[hx+14,hy+10],[hx+12,hy+12],[hx+12,hy+14],[hx+9,hy+15],[hx+5,hy+13]],P.skin);
+ R(g,hx+5,hy+9,2,4,'#efc49c');R(g,hx+12,hy+10,2,1,'#efc49c');
+ // Nose, visible eye, single quiet eyebrow. No cheek dot that reads as beard.
+ R(g,hx+10,hy+7,3,1,'#5b4546');R(g,hx+11,hy+9,1,2,'#30313b');R(g,hx+10,hy+9,1,1,'#f1d5ad');R(g,hx+11,hy+13,2,1,'#93685c');
+ // Distinct fringe and crown retain the same silhouette in every frame.
+ poly(g,[[hx-1,hy+4],[hx+1,hy],[hx+5,hy-2],[hx+11,hy-1],[hx+13,hy+1],[hx+13,hy+4],[hx+10,hy+5],[hx+7,hy+4],[hx+5,hy+9],[hx+3,hy+8],[hx+3,hy+12],[hx,hy+10]],P.hair);
+ R(g,hx+2,hy+1,6,2,P.hairLight);R(g,hx+8,hy+1,3,1,'#575251');R(g,hx,hy+5,2,5,'#353943');R(g,hx+4,hy+9,2,3,P.skin);
+ // Near arm; complete connected paths baked into the frame.
+ if(sit>.5){
+  poly(g,[[25,25+dy],[29,27+dy],[29,33+dy],[34,35+dy],[33,38+dy],[25,35+dy],[24,31+dy]],P.jacketLight);R(g,31,35+dy,5,3,P.skin);R(g,35,36+dy,2,2,P.skinShade);
+ }else if(switcher>0){
+  const ty=Math.round(34-switcher*10);
+  poly(g,[[25,24+dy],[29,26+dy],[31,32],[30,35],[27,34],[25,ty+2],[28,ty],[29,31],[27,29]],P.jacketLight);
+  R(g,25,ty-2,4,4,P.skin);R(g,26,ty-3,2,2,P.skin);R(g,28,ty-1,1,2,P.skinShade);
+ }else{
+  const swing=walking?Math.round(-Math.sin(phase)*4):0;
+  poly(g,[[25,24+dy],[29,26+dy],[29+swing,34+dy],[28+swing,38+dy],[24+swing,37+dy],[25+swing,32+dy]],P.jacketLight);
+  R(g,24+swing,36+dy,4,5,P.skin);R(g,24+swing,39+dy,1,2,P.skinShade);R(g,26+swing,40+dy,2,1,'#edc39b');
+ }
+}
+function buildSprites(){
+ const atlas=make(FRAME_W*8,FRAME_H*6),g=atlas.getContext('2d');g.imageSmoothingEnabled=false;
+ const names=['idle','walk','sitDown','standUp','sitting','switch'];
+ for(let row=0;row<6;row++)for(let frame=0;frame<8;frame++){g.save();g.translate(frame*FRAME_W,row*FRAME_H);bodyFrame(g,names[row],['sitDown','standUp','switch'].includes(names[row])?Math.min(frame,3):frame);g.restore();}
+ return {atlas,names};
+}
+function init(){if(!layers)layers={on:buildBackground(true),off:buildBackground(false)};if(!sprites)sprites=buildSprites();}
+function actor(g,p){
+ const action=p.action||'idle';const row=Math.max(0,sprites.names.indexOf(action));let f=0;
+ if(action==='walk')f=Math.floor(Math.abs(p.walkDistance||0)/4)%8;
+ if(['sitDown','standUp','switch'].includes(action))f=clamp(Math.floor((p.actionProgress||0)*4),0,3);
+ const x=Math.round(p.x??172),dir=p.dir<0?-1:1;
+ // A flat pixel shadow grounds the body in both lighting states.
+ R(g,x-10,FOOT-1,21,2,'#343640');R(g,x-7,FOOT-2,15,1,'#42424a');
+ g.save();g.translate(x,FOOT-55);g.scale(dir,1);g.drawImage(sprites.atlas,f*FRAME_W,row*FRAME_H,FRAME_W,FRAME_H,-20,0,FRAME_W,FRAME_H);g.restore();
+}
+let world;
+function drawScene(ctx,state={}){
+ init();if(!world)world=make(W,H);const g=world.getContext('2d');g.imageSmoothingEnabled=false;
+ g.clearRect(0,0,W,H);g.drawImage(state.lampOn===false?layers.off:layers.on,0,0);bench(g);
+ const p=state.player||{x:172,dir:1,action:'idle',walkDistance:0};actor(g,p);
+ // Dust slowly drifts in the pool of light. Never controls a character or prop.
+ if(state.lampOn!==false){const t=(state.tick||0)/60;for(let i=0;i<10;i++){const x=333+((i*23+t*(.6+i*.04))%71),y=156+((i*13+t*.45)%57);if((i+Math.floor(t/3))%3!==0)R(g,x,y,1,1,i%2?'#b7a88b':'#c5b492');}}
+ ctx.save();ctx.imageSmoothingEnabled=false;ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+ const scaleX=ctx.canvas.width/W,scaleY=ctx.canvas.height/H;ctx.scale(scaleX,scaleY);
+ if(state.camera==='close'){
+  const z=1.5,sw=W/z,sh=H/z;const cx=clamp((p.x??172)-sw*.49,0,W-sw),cy=83;
+  ctx.drawImage(world,Math.round(cx),cy,sw,sh,0,0,W,H);
+ }else ctx.drawImage(world,0,0);
+ ctx.restore();
+}
+function drawModelSheet(ctx){
+ init();const g=ctx;const s=2;g.imageSmoothingEnabled=false;R(g,0,0,g.canvas.width,g.canvas.height,'#202d3b');
+ g.fillStyle='#dbc49c';g.font='18px monospace';g.fillText('SILENCE / CHARACTER & ACTIONS',24,30);
+ sprites.names.forEach((name,row)=>{g.fillStyle='#9faeb6';g.font='13px monospace';g.fillText(name.toUpperCase(),24,66+row*123);for(let f=0;f<8;f++){const x=130+f*83,y=40+row*123;R(g,x-3,y+112,77,1,'#54606a');g.drawImage(sprites.atlas,f*FRAME_W,row*FRAME_H,FRAME_W,FRAME_H,x,y,FRAME_W*s,FRAME_H*s);}});
+ g.fillStyle='#9faeb6';g.font='13px monospace';g.fillText('LEFT / RIGHT',24,804);
+ for(let f=0;f<8;f++){const row=[0,0,1,1,4,4,5,5][f],frame=f<4?2:3,x=130+f*83,y=782;g.save();g.translate(x+(f%2===0?80:0),y);g.scale(f%2===0?-2:2,2);g.drawImage(sprites.atlas,frame*FRAME_W,row*FRAME_H,FRAME_W,FRAME_H,0,0,FRAME_W,FRAME_H);g.restore();}
+ const y=926;Object.values(P).forEach((c,i)=>R(g,24+i*42,y,34,22,c));g.fillStyle='#a8b2b9';g.font='12px monospace';g.fillText('Original pixels · 40×58 frame · feet (20,55) · 32px walk cycle',24,971);g.fillText('Left/right supported. No back-facing action is claimed.',24,994);
+}
+function exportAssets(){
+ init();const stool=make(W,H);bench(stool.getContext('2d'));
+ const lampOn=make(43,75),lampOff=make(43,75);
+ for(const [c,on] of [[lampOn,true],[lampOff,false]]){const g=c.getContext('2d');g.translate(-345,-139);lamp(g,on);}
+ const metadata={version:ART_VERSION,nativeSize:[W,H],frameSize:[FRAME_W,FRAME_H],cellSize:[FRAME_W,FRAME_H],columns:8,rows:sprites.names,anchor:[20,55],rig:'silence-fullbody-40x58',stridePixels:32,
+  actions:{idle:{row:0,frames:[0]},walk:{row:1,frames:[0,1,2,3,4,5,6,7],stridePixels:32},sitDown:{row:2,frames:[0,1,2,3],duration:.6},standUp:{row:3,frames:[0,1,2,3],duration:.6},sitting:{row:4,frames:[0]},switch:{row:5,frames:[0,1,2,3],duration:.6,contactRange:[.5,1],contactWorld:[367,184],contactPlayerX:360}},
+  bench:{worldBounds:[148,199,60,17],seatTop:202,playerX:172,playerDir:-1},lamp:{worldOrigin:[345,139],size:[43,75],anchor:[22,73]},
+  origin:'Original procedural pixel artwork, created for this experiment; no external artwork.'};
+ return {roomLightOn:layers.on,roomLightOff:layers.off,characterAtlas:sprites.atlas,bench:stool,lampOn,lampOff,metadata};
+}
+
+return {drawScene,ART_VERSION};})();
+
+
+const VERSION = 'anjing-room-1.0.2';
+const LOG_SCHEMA = 'song-game-mv-input/v1';
+const FPS = 60;
+const SEED = 261106;
+const $ = id => document.getElementById(id);
+const canvas = $('game');
+const output = canvas.getContext('2d', {alpha:false});
+const world = document.createElement('canvas');
+world.width = 480; world.height = 270;
+const graphics = world.getContext('2d', {alpha:false});
+const supportedKeys = new Set(['ArrowLeft','ArrowRight','KeyA','KeyD','KeyE','Space','KeyC']);
+const keys = new Set();
+const interactive = ['sitDown','standUp','switch'];
+let state = initialState();
+let phase = 'explore';
+let audioContext, audioBuffer, audioHash = '', audioName = '', audioSource;
+let gainNode, audioDestination, captureStream, recorder;
+let audioStart = 0, recordWallStart = 0, currentTake = null;
+let lastTake = null, importedTake = null, replayTake = null, replayIndex = 0;
+let chunks = [], videoURL = '', logURL = '', lastBlob = null;
+let finalized = false, loadingSequence = 0, wakeLock = null, finishTimer;
+let lastFrame = 0, previewAccumulator = 0, recordingError = null;
+let activeAnimation = null;
+const errors = [];
+
+function initialState() {
+  return {tick:0, elapsed:0, player:{x:238,dir:-1,action:'idle',actionProgress:0,walkDistance:0},lampOn:true,camera:'wide'};
+}
+function clone(value) { return JSON.parse(JSON.stringify(value)); }
+function clamp(v,a,b) { return Math.max(a, Math.min(b,v)); }
+function busy() { return ['preparing','recording','finalizing'].includes(phase); }
+function message(text, error=false) {
+  const target = $('status');
+  target.replaceChildren();
+  const dot = document.createElement('span'); dot.className='status-dot';
+  target.append(dot, document.createTextNode(text));
+  target.classList.toggle('error',error);
+}
+function timeText(seconds) {
+  const t = Math.max(0, Number(seconds)||0);
+  return `${Math.floor(t/60)}:${Math.floor(t%60).toString().padStart(2,'0')}`;
+}
+function getBounds() {
+  if(!audioBuffer) throw new Error('先载入一段音乐，再开始录制。');
+  const start = Number($('clip-start').value), end = Number($('clip-end').value);
+  if(!Number.isFinite(start)||!Number.isFinite(end)||start<0||end>audioBuffer.duration+0.011||end-start<0.1) {
+    throw new Error('请设置有效的片段范围：结束应晚于开始，且不超过音频长度。');
+  }
+  return {start, end:Math.min(end,audioBuffer.duration), duration:Math.min(end,audioBuffer.duration)-start};
+}
+function updateControls() {
+  const locked = busy();
+  $('audio-file').disabled = locked;
+  $('clip-start').disabled = locked||!audioBuffer;
+  $('clip-end').disabled = locked||!audioBuffer;
+  $('start-recording').disabled = locked||!audioBuffer;
+  $('start-recording').hidden = phase==='recording'||phase==='finalizing';
+  $('stop-recording').hidden = phase!=='recording';
+  $('record-again').disabled = locked||!audioBuffer;
+  $('replay-take').disabled = locked||!lastTake||!audioBuffer;
+  $('replay-file').disabled = locked;
+  $('run-imported-replay').disabled = locked||!importedTake||!audioBuffer;
+  $('audio-label').style.opacity = locked?'.4':'1';
+  $('status').parentElement.classList.toggle('is-recording',phase==='recording');
+}
+function updateClipText() {
+  try {
+    const bounds=getBounds();
+    $('clip-summary').textContent=`${timeText(bounds.start)} — ${timeText(bounds.end)} · ${bounds.duration.toFixed(1)} 秒`;
+    $('clip-note').textContent='录制将随这段音乐结束。';
+    $('clip-note').classList.remove('error');
+  } catch(e) {
+    $('clip-note').textContent=e.message;
+    $('clip-note').classList.add('error');
+  }
+}
+function ensureAudioContext() {
+  if(!audioContext) {
+    const AudioCtx=window.AudioContext||window.webkitAudioContext;
+    if(!AudioCtx) throw new Error('这个浏览器暂不支持音频播放与录制，请使用新版 Chrome、Edge 或 Safari。');
+    audioContext=new AudioCtx();
+  }
+  return audioContext;
+}
+async function digest(bytes) {
+  if(!crypto.subtle) throw new Error('请使用 HTTPS 或本机 localhost 打开，以便安全记录音频身份。');
+  const hash=await crypto.subtle.digest('SHA-256',bytes);
+  return [...new Uint8Array(hash)].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+async function loadAudio(bytes,name) {
+  const sequence=++loadingSequence;
+  message('正在读取音乐…');
+  const context=ensureAudioContext();
+  const [buffer,hash]=await Promise.all([context.decodeAudioData(bytes.slice(0)),digest(bytes)]);
+  if(sequence!==loadingSequence) return;
+  if(!buffer.length||!Number.isFinite(buffer.duration)||buffer.duration<0.1) throw new Error('这段音频太短，无法开始录制。');
+  audioBuffer=buffer; audioHash=hash; audioName=name;
+  $('track-name').textContent=name;
+  $('track-details').textContent=`${timeText(buffer.duration)} · ${buffer.sampleRate/1000} kHz · 仅在本机播放与录制`;
+  $('clip-start').value='0';
+  $('clip-start').max=String(buffer.duration);
+  $('clip-end').value=String(Math.floor(buffer.duration*1000)/1000);
+  $('clip-end').max=String(buffer.duration);
+  updateClipText(); updateControls();
+  message('音乐已就绪 · 开始后，音乐与录像会一起运行');
+}
+function action(kind,targetX=state.player.x) {
+  activeAnimation={kind,fromX:state.player.x,targetX,ticks:0,duration:kind==='switch'?36:36,toggled:false};
+  state.player.action=kind; state.player.actionProgress=0;
+}
+function interact() {
+  if(interactive.includes(state.player.action)) return;
+  if(state.player.action==='sitting') { action('standUp'); return; }
+  if(Math.abs(state.player.x-172)<=20) {
+    state.player.dir=-1; action('sitDown',172);
+  } else if(Math.abs(state.player.x-360)<=20) {
+    state.player.dir=1; action('switch',360);
+  }
+}
+function applyInput(code,down) {
+  if(keys.has(code)===down) return;
+  if(down) {
+    keys.add(code);
+    if(code==='KeyE'||code==='Space') interact();
+    if(code==='KeyC') state.camera=state.camera==='wide'?'close':'wide';
+  } else keys.delete(code);
+}
+function input(code,down,origin='keyboard') {
+  if(!supportedKeys.has(code)) return;
+  if(['preparing','finalizing','review'].includes(phase)) return;
+  if(phase==='recording'&&replayTake) return;
+  if(phase==='recording') advanceToAudio();
+  if(keys.has(code)===down) return;
+  if(phase==='recording'&&currentTake) {
+    currentTake.inputs.push({tick:state.tick,code,down,source:origin,audioTime:Math.max(0,audioContext.currentTime-audioStart)});
+  }
+  applyInput(code,down);
+}
+function releaseAll(origin='blur') {
+  for(const key of [...keys]) input(key,false,origin);
+}
+function step() {
+  if(phase==='recording'&&replayTake) {
+    while(replayIndex<replayTake.inputs.length&&replayTake.inputs[replayIndex].tick===state.tick) {
+      const entry=replayTake.inputs[replayIndex++]; applyInput(entry.code,entry.down);
+    }
+  }
+  const player=state.player;
+  const direction=Number(keys.has('ArrowRight')||keys.has('KeyD'))-Number(keys.has('ArrowLeft')||keys.has('KeyA'));
+  if(activeAnimation) {
+    activeAnimation.ticks++;
+    const progress=clamp(activeAnimation.ticks/activeAnimation.duration,0,1);
+    player.actionProgress=progress;
+    const smooth=progress*progress*(3-2*progress);
+    player.x=activeAnimation.fromX+(activeAnimation.targetX-activeAnimation.fromX)*smooth;
+    if(activeAnimation.kind==='switch'&&progress>=.75&&!activeAnimation.toggled) {
+      state.lampOn=!state.lampOn; activeAnimation.toggled=true;
+    }
+    if(progress>=1) {
+      player.action=activeAnimation.kind==='sitDown'?'sitting':'idle';
+      player.actionProgress=0; activeAnimation=null;
+    }
+  } else if(player.action==='sitting') {
+    if(direction) action('standUp');
+  } else if(direction) {
+    player.dir=direction;
+    const next=clamp(player.x+direction*48/FPS,48,430);
+    const distance=Math.abs(next-player.x);
+    player.walkDistance+=distance; player.x=next;
+    player.action=distance>0?'walk':'idle';
+  } else { player.action='idle'; player.actionProgress=0; }
+  state.tick++;
+  state.elapsed=state.tick/FPS;
+}
+function advanceToAudio() {
+  if(phase!=='recording'||!currentTake||!audioContext) return;
+  const target=Math.min(currentTake.clip.duration,Math.max(0,audioContext.currentTime-audioStart));
+  const wanted=Math.floor(target*FPS+1e-7);
+  // Advancing the simulation never moves a character without the recorded input state.
+  while(state.tick<wanted) step();
+  state.elapsed=target;
+}
+function draw() {
+  drawScene(graphics,state);
+  output.imageSmoothingEnabled=false;
+  output.drawImage(world,0,0,canvas.width,canvas.height);
+}
+function updateHint() {
+  const player=state.player;
+  let text='靠近琴凳可以坐下，窗边的灯可以开关。';
+  if(player.action==='sitting') text='E 起身 · 也可以一直坐着，音乐会继续。';
+  else if(interactive.includes(player.action)) text='让这个动作慢慢完成。';
+  else if(Math.abs(player.x-172)<=20) text='E 坐下 · 旁边的空位会一直留着。';
+  else if(Math.abs(player.x-360)<=20) text=`E ${state.lampOn?'关灯':'开灯'} · 想改变主意，随时可以。`;
+  if(replayTake&&phase==='recording') text='正在用保存的输入重现这次表演。';
+  $('hint').textContent=text;
+}
+function frame(now) {
+  const dt=lastFrame?Math.min((now-lastFrame)/1000,.1):0;
+  lastFrame=now;
+  if(phase==='recording') {
+    advanceToAudio();
+    $('clock').textContent=`${timeText(state.elapsed)} / ${timeText(currentTake.clip.duration)}`;
+  } else if(['explore','ready'].includes(phase)) {
+    previewAccumulator+=dt;
+    while(previewAccumulator>=1/FPS) { step(); previewAccumulator-=1/FPS; }
+  }
+  try { draw(); } catch(error) {
+    if(!errors.includes(error.message)) {errors.push(error.message); console.error(error);}
+  }
+  updateHint();
+  requestAnimationFrame(frame);
+}
+function selectMime() {
+  if(!window.MediaRecorder||!canvas.captureStream) throw new Error('这个浏览器暂不支持游戏画面录制，请使用新版桌面 Chrome 或 Edge。');
+  const mime=['video/mp4;codecs=avc1.424028,mp4a.40.2','video/mp4'].find(type=>MediaRecorder.isTypeSupported(type));
+  if(!mime) throw new Error('这个浏览器暂不支持可定位回看的 MP4 录制，请使用新版桌面 Chrome 或 Edge。琴房仍可自由探索。');
+  return mime;
+}
+function validateTake(take) {
+  if(!take||take.schema!==LOG_SCHEMA) throw new Error('这不是支持的操作记录文件。');
+  if(take.gameVersion!==VERSION||take.artVersion!==ART_VERSION) throw new Error('操作记录来自另一游戏版本，请使用它对应的版本重拍。');
+  if(take.audio?.sha256!==audioHash) throw new Error('音乐文件不同。请先载入录制时使用的同一音频，再重拍。');
+  if(take.seed!==SEED||JSON.stringify(take.initialState)!==JSON.stringify(initialState())) throw new Error('初始场景不同，不能可靠重现这份记录。');
+  if(!take.clip||!Number.isFinite(take.clip.start)||!Number.isFinite(take.clip.end)||take.clip.start<0||take.clip.end>audioBuffer.duration+.011||take.clip.end<=take.clip.start) throw new Error('操作记录的音乐片段无效。');
+  if(Math.abs(take.clip.duration-(take.clip.end-take.clip.start))>.001) throw new Error('操作记录的片段长度不一致。');
+  if(!Array.isArray(take.inputs)||take.inputs.length>200000) throw new Error('操作记录的输入列表无效。');
+  let prev=-1;
+  for(const event of take.inputs) {
+    if(!Number.isInteger(event.tick)||event.tick<prev||event.tick<0||event.tick>Math.ceil(take.clip.duration*FPS)||!supportedKeys.has(event.code)||typeof event.down!=='boolean') throw new Error('操作记录包含无效的输入事件。');
+    prev=event.tick;
+  }
+  return take;
+}
+function cleanupMedia() {
+  clearTimeout(finishTimer);
+  if(audioSource) {
+    audioSource.onended=null;
+    try{audioSource.stop();}catch{}
+    try{audioSource.disconnect();}catch{}
+    audioSource=null;
+  }
+  if(gainNode){try{gainNode.disconnect();}catch{} gainNode=null;}
+  if(audioDestination){try{audioDestination.disconnect();}catch{} audioDestination=null;}
+  if(captureStream){for(const track of captureStream.getTracks())track.stop();captureStream=null;}
+  if(wakeLock){wakeLock.release().catch(()=>{});wakeLock=null;}
+}
+function clearReviewURLs() {
+  const video=$('playback'); video.pause(); video.removeAttribute('src'); video.load();
+  if(videoURL) URL.revokeObjectURL(videoURL);
+  if(logURL) URL.revokeObjectURL(logURL);
+  videoURL=''; logURL=''; lastBlob=null;
+}
+async function beginRecording(replay=null) {
+  if(busy()) return;
+  try {
+    const context=ensureAudioContext();
+    const mime=selectMime();
+    let bounds=getBounds();
+    if(replay) {validateTake(replay);bounds=clone(replay.clip);}
+    phase='preparing'; updateControls(); message('准备录制…');
+    await context.resume();
+    if(context.state!=='running') throw new Error('浏览器尚未允许播放声音，请再次点击开始。');
+    cleanupMedia(); clearReviewURLs();
+    $('review').hidden=true;
+    state=initialState(); activeAnimation=null; keys.clear(); previewAccumulator=0;
+    replayTake=replay?clone(replay):null; replayIndex=0;
+    chunks=[]; finalized=false; recordingError=null;
+    audioDestination=context.createMediaStreamDestination();
+    gainNode=context.createGain(); gainNode.gain.value=1;
+    gainNode.connect(context.destination); gainNode.connect(audioDestination);
+    audioSource=context.createBufferSource(); audioSource.buffer=audioBuffer; audioSource.connect(gainNode);
+    draw();
+    const videoStream=canvas.captureStream(30);
+    captureStream=new MediaStream([...videoStream.getVideoTracks(),...audioDestination.stream.getAudioTracks()]);
+    recorder=new MediaRecorder(captureStream,{...(mime?{mimeType:mime}:{}),videoBitsPerSecond:8000000,audioBitsPerSecond:192000});
+    currentTake={schema:LOG_SCHEMA,gameVersion:VERSION,artVersion:ART_VERSION,seed:SEED,createdAt:new Date().toISOString(),mode:replay?'input-replay':'live-input',audio:{name:audioName,sha256:audioHash,duration:audioBuffer.duration,sampleRate:audioBuffer.sampleRate},clip:bounds,initialState:initialState(),simulationFPS:FPS,captureFPS:30,canvas:{width:1920,height:1080},inputs:replay?clone(replay.inputs):[],events:[],timing:{},complete:false};
+    recorder.ondataavailable=event=>{if(event.data.size)chunks.push(event.data);};
+    recorder.onerror=event=>{
+      recordingError=event.error?.message||'浏览器录制失败';
+      errors.push(recordingError);
+      finishRecording(false,recordingError);
+    };
+    recorder.onstop=finalizeRecording;
+    recorder.start(1000);
+    recordWallStart=performance.now();
+    audioStart=context.currentTime+.08;
+    currentTake.timing={scheduledAudioContextStart:audioStart,recorderAudioContextStart:context.currentTime,scheduledLeadInSeconds:audioStart-context.currentTime,encoderDrainSeconds:.25,startedAtPerformanceMs:recordWallStart,audioGain:1};
+    phase='recording';
+    audioSource.onended=()=>{if(phase==='recording')finishRecording(true,'音乐已结束');};
+    audioSource.start(audioStart,bounds.start,bounds.duration);
+    currentTake.events.push({type:'recording-start',tick:0,mode:currentTake.mode});
+    canvas.focus({preventScroll:true});
+    canvas.scrollIntoView({block:'center',behavior:'instant'});
+    message(replay?'正在回放操作并录制 · 音乐持续播放':'正在录制 · 自由表演，音乐结束后回看');
+    updateControls();
+    if(navigator.wakeLock) navigator.wakeLock.request('screen').then(lock=>{
+      if(phase==='recording')wakeLock=lock;else lock.release().catch(()=>{});
+    }).catch(()=>{});
+  } catch(error) {
+    phase=audioBuffer?'ready':'explore';
+    cleanupMedia(); message(error.message,true); updateControls();
+  }
+}
+function finishRecording(complete,reason) {
+  if(phase!=='recording'||finalized) return;
+  advanceToAudio();
+  if(complete) {
+    const wanted=Math.floor(currentTake.clip.duration*FPS+1e-7);
+    while(state.tick<wanted)step();
+    state.elapsed=currentTake.clip.duration;
+  }
+  // A held input at the ending is part of the final state; it is not silently rewritten.
+  currentTake.complete=complete&&!recordingError;
+  currentTake.endReason=reason;
+  currentTake.finalState=clone(state);
+  currentTake.ticks=state.tick;
+  currentTake.events.push({type:complete?'audio-ended':'interrupted',tick:state.tick,reason});
+  currentTake.timing.recordedPerformanceSeconds=(performance.now()-recordWallStart)/1000;
+  currentTake.timing.contentSeconds=state.elapsed;
+  currentTake.timing.replayInputsApplied=replayTake?replayIndex:null;
+  if(replayTake?.finalState&&complete&&replayTake.complete) {
+    currentTake.replayVerification={matches:JSON.stringify(state)===JSON.stringify(replayTake.finalState),expected:clone(replayTake.finalState),actual:clone(state)};
+  }
+  phase='finalizing';
+  keys.clear();
+  if(audioSource) {audioSource.onended=null;if(!complete)try{audioSource.stop();}catch{}}
+  draw();
+  captureStream?.getVideoTracks()[0]?.requestFrame?.();
+  message('正在整理你的录像…'); updateControls();
+  finishTimer=setTimeout(()=>{
+    if(recorder?.state!=='inactive') {try{recorder.stop();}catch(error){recordingError=error.message;finalizeRecording();}}
+    else finalizeRecording();
+  },250);
+}
+function finalizeRecording() {
+  if(finalized) return;
+  finalized=true;
+  const mime=recorder?.mimeType||chunks[0]?.type||'video/webm';
+  lastBlob=new Blob(chunks,{type:mime}); chunks=[];
+  currentTake.mimeType=mime;
+  currentTake.fileBytes=lastBlob.size;
+  lastTake=clone(currentTake);
+  cleanupMedia(); recorder=null; replayTake=null; keys.clear();
+  phase='review';
+  if(!lastBlob.size) {message('没有生成有效录像，请重新录制。',true);updateControls();return;}
+  videoURL=URL.createObjectURL(lastBlob);
+  logURL=URL.createObjectURL(new Blob([JSON.stringify(lastTake,null,2)+'\n'],{type:'application/json'}));
+  $('playback').src=videoURL;
+  $('download-video').href=videoURL;
+  $('download-video').download=`安静-${lastTake.complete?'我的MV':'中断片段'}.${mime.includes('mp4')?'mp4':'webm'}`;
+  $('download-log').href=logURL;
+  $('review-title').textContent=lastTake.complete?'这是你的版本。':'这一次暂停在这里。';
+  $('review-meta').textContent=`${lastTake.timing.contentSeconds.toFixed(1)} 秒 · 1920 × 1080 · ${(lastBlob.size/1048576).toFixed(1)} MB`;
+  $('review-note').textContent=lastTake.complete?'录像包含游戏画面与音乐。操作按钮和录制面板没有进入画面。':`录制中断：${lastTake.endReason}。这段录像仍可保存，或重新录制。`;
+  $('review').hidden=false;
+  $('clock').textContent=lastTake.complete?'录制完成':'录制已中断';
+  message(lastTake.complete?'你的 MV 已完成 · 可以回看、保存或再录一版':'录制中断 · 可以保存片段或重新录制',!lastTake.complete);
+  updateControls();
+}
+
+$('audio-file').addEventListener('change',async event=>{
+  const file=event.target.files?.[0]; if(!file||busy())return;
+  try{await loadAudio(await file.arrayBuffer(),file.name);}catch(error){message(`音频载入失败：${error.message}`,true);}
+  event.target.value='';
+});
+for(const id of ['clip-start','clip-end']) $(id).addEventListener('input',updateClipText);
+$('start-recording').addEventListener('click',()=>beginRecording());
+$('record-again').addEventListener('click',()=>beginRecording());
+$('stop-recording').addEventListener('click',()=>finishRecording(false,'手动结束'));
+$('replay-take').addEventListener('click',()=>beginRecording(lastTake));
+$('run-imported-replay').addEventListener('click',()=>beginRecording(importedTake));
+$('replay-file').addEventListener('change',async event=>{
+  const file=event.target.files?.[0];if(!file||busy())return;
+  try {
+    if(file.size>20*1024*1024)throw new Error('操作记录文件过大。');
+    const parsed=JSON.parse(await file.text());
+    if(!audioBuffer) throw new Error('请先载入录制时使用的音频。');
+    validateTake(parsed); importedTake=parsed;
+    $('replay-info').textContent=`已载入 ${parsed.inputs.length} 条输入 · ${parsed.clip.duration.toFixed(1)} 秒`;
+    $('replay-info').classList.remove('error'); updateControls();
+  } catch(error) {
+    importedTake=null;$('replay-info').textContent=error.message;$('replay-info').classList.add('error');updateControls();
+  }
+  event.target.value='';
+});
+function typing(target) { return target instanceof HTMLElement&&(['INPUT','TEXTAREA','SELECT','BUTTON','A','SUMMARY','VIDEO'].includes(target.tagName)||target.isContentEditable); }
+document.addEventListener('keydown',event=>{
+  if(event.repeat||event.ctrlKey||event.metaKey||event.altKey||typing(event.target)||!supportedKeys.has(event.code))return;
+  event.preventDefault();input(event.code,true);
+});
+document.addEventListener('keyup',event=>{
+  if(!supportedKeys.has(event.code))return;
+  if(!typing(event.target))event.preventDefault();
+  input(event.code,false);
+});
+window.addEventListener('blur',()=>releaseAll());
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden&&phase==='recording')finishRecording(false,'页面进入后台，已停止以避免音画错位');
+});
+for(const button of document.querySelectorAll('[data-key]')) {
+  button.addEventListener('pointerdown',event=>{
+    event.preventDefault();button.setPointerCapture(event.pointerId);input(button.dataset.key,true,'touch');
+  });
+  for(const name of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(name,event=>{
+    event.preventDefault();input(button.dataset.key,false,'touch');
+  });
+}
+window.addEventListener('beforeunload',()=>{cleanupMedia();clearReviewURLs();});
+Object.defineProperty(window,'gameDebug',{value:Object.freeze({
+  snapshot:()=>clone({version:VERSION,artVersion:ART_VERSION,phase,state,keys:[...keys],hasAudio:!!audioBuffer,audioHash,playing:!!audioSource,contextState:audioContext?.state,errors}),
+  getRecordingInfo:()=>clone({phase,mime:recorder?.mimeType||lastTake?.mimeType||null,bytes:lastBlob?.size||0,lastTake,currentTake:phase==='recording'?currentTake:null,downloadReady:!!videoURL})
+}),writable:false});
+requestAnimationFrame(frame);
+updateControls();
+(async function loadLocalReference(){
+  if(!['127.0.0.1','localhost','[::1]'].includes(location.hostname)) return;
+  try {
+    const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),2500);
+    const response=await fetch('/_local/status',{signal:controller.signal,cache:'no-store'});
+    clearTimeout(timeout);
+    if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))return;
+    const info=await response.json();if(!info.available)return;
+    if(audioBuffer||busy())return;
+    const audioResponse=await fetch('/_local/audio',{cache:'no-store'});
+    if(!audioResponse.ok)return;
+    const bytes=await audioResponse.arrayBuffer();
+    if(audioBuffer||busy())return;
+    await loadAudio(bytes,'周杰伦 · 安静 / 30 秒实验选段');
+  } catch { /* Public edition intentionally contains no bundled commercial recording. */ }
+})();
+
+</script>
+</body>
+</html>

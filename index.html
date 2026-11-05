@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151b22">
+  <title>安静 · 在游戏里拍一支 MV</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <a class="wordmark" href="./" aria-label="回到首页"><span class="mark" aria-hidden="true">▦</span> 一首歌，一款游戏</a>
+      <span class="edition">可玩 MV 实验 <span class="number">01</span></span>
+    </header>
+    <section class="intro">
+      <div><p class="eyebrow">A ROOM. A SONG. YOUR TAKE.</p><h1>安静<span>还亮着灯的琴房</span></h1></div>
+      <p class="lede">坐一会儿，走到窗边，或再折回来。<br>没有规定动作，这段时间属于你。</p>
+    </section>
+    <section class="studio" aria-label="游戏与录制">
+      <div class="screen-wrap">
+        <canvas id="game" width="1920" height="1080" tabindex="0" aria-label="可操作的像素琴房，左右方向键行走，E 互动，C 切换镜头"></canvas>
+      </div>
+      <div class="status-row"><span id="status" role="status"><span class="status-dot"></span>琴房已开放 · 可以先走走</span><span id="clock">自由探索</span></div>
+      <div class="controls-row">
+        <div class="key-guide"><span><kbd>←</kbd><kbd>→</kbd> 行走</span><span><kbd>E</kbd> 坐下 / 互动</span><span><kbd>C</kbd> 镜头</span></div>
+        <p id="hint">靠近琴凳可以坐下，窗边的灯可以开关。</p>
+      </div>
+      <div class="touch-controls" aria-label="触控操作"><button data-key="ArrowLeft" aria-label="向左走">←</button><button data-key="ArrowRight" aria-label="向右走">→</button><button data-key="KeyE">互动</button><button data-key="KeyC">镜头</button></div>
+    </section>
+    <section class="desk" aria-label="选择音乐与开始录制">
+      <div class="music-block">
+        <span class="section-index">01 / 音乐</span>
+        <div class="track-row"><div class="track-icon" aria-hidden="true">♫</div><div class="track-info"><strong id="track-name">载入你的音乐</strong><span id="track-details">文件只在你的浏览器里使用，不会上传。</span></div><label class="button secondary file-button" id="audio-label">选择音频<input id="audio-file" type="file" accept="audio/*,.mp3,.m4a,.wav,.ogg,.flac,.aac"></label></div>
+        <details id="clip-settings"><summary>选取片段 <span id="clip-summary">默认播放整段音频</span></summary><div class="clip-inputs"><label>从 <input id="clip-start" type="number" min="0" step="0.1" value="0" disabled> 秒开始</label><label>到 <input id="clip-end" type="number" min="0.1" step="0.1" value="30" disabled> 秒结束</label><span id="clip-note">也可以使用整首歌。</span></div></details>
+      </div>
+      <div class="record-block"><span class="section-index">02 / 你的表演</span><button id="start-recording" class="button primary" disabled><span class="record-dot" aria-hidden="true"></span>开始，录一版自己的 MV</button><button id="stop-recording" class="button secondary" hidden>结束本次录制</button><p>音乐和录像一起开始。结束后回看、保存，<br>也可以重新来一遍。</p></div>
+    </section>
+    <section id="review" class="review" hidden aria-label="回看你的 MV">
+      <div class="review-heading"><div><p class="eyebrow">YOUR TAKE</p><h2 id="review-title">这是你的版本。</h2></div><span id="review-meta"></span></div>
+      <video id="playback" controls playsinline preload="metadata"></video>
+      <div class="review-actions"><a id="download-video" class="button primary" download="安静-我的MV.webm">保存 MV</a><button id="record-again" class="button secondary">重新录制</button><button id="replay-take" class="button secondary">回放操作并重拍</button><a id="download-log" class="text-button" download="安静-操作记录.json">保存操作记录</a></div>
+      <p id="review-note">录像只有游戏画面与音乐，操作面板不会出现在画面里。</p>
+    </section>
+    <details class="replay-import"><summary>已有操作记录？载入并重拍</summary><p>使用同一音频、同一游戏版本，重现之前的表演。音乐不会包含在操作记录内。</p><label class="button secondary file-button">选择操作记录<input id="replay-file" type="file" accept="application/json,.json"></label><button id="run-imported-replay" class="button secondary" disabled>重拍载入的操作</button><span id="replay-info"></span></details>
+    <footer><span>一间琴房。无限种停留的方式。</span><span>方向键 / A、D · E / 空格互动 · C 切换镜头</span></footer>
+  </main>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
