@@ -1,6 +1,6 @@
 import {drawScene, ART_VERSION} from './art.js';
 
-const VERSION = 'anjing-room-1.0.2';
+const VERSION = 'anjing-room-1.0.3';
 const LOG_SCHEMA = 'song-game-mv-input/v1';
 const FPS = 60;
 const SEED = 261106;
@@ -16,7 +16,7 @@ const interactive = ['sitDown','standUp','switch'];
 let state = initialState();
 let phase = 'explore';
 let audioContext, audioBuffer, audioHash = '', audioName = '', audioSource;
-let gainNode, audioDestination, captureStream, recorder;
+let gainNode, audioDestination, captureStream, recorder, captureKeepAlive;
 let audioStart = 0, recordWallStart = 0, currentTake = null;
 let lastTake = null, importedTake = null, replayTake = null, replayIndex = 0;
 let chunks = [], videoURL = '', logURL = '', lastBlob = null;
@@ -236,6 +236,7 @@ function validateTake(take) {
 }
 function cleanupMedia() {
   clearTimeout(finishTimer);
+  if(captureKeepAlive){try{captureKeepAlive.stop();captureKeepAlive.disconnect();}catch{} captureKeepAlive=null;}
   if(audioSource) {
     audioSource.onended=null;
     try{audioSource.stop();}catch{}
@@ -269,6 +270,12 @@ async function beginRecording(replay=null) {
     replayTake=replay?clone(replay):null; replayIndex=0;
     chunks=[]; finalized=false; recordingError=null;
     audioDestination=context.createMediaStreamDestination();
+    // Keep the capture graph rendering silent samples after the song ends so
+    // the AAC encoder can drain its last audio frames before recorder.stop().
+    captureKeepAlive=context.createConstantSource();
+    captureKeepAlive.offset.value=0;
+    captureKeepAlive.connect(audioDestination);
+    captureKeepAlive.start();
     gainNode=context.createGain(); gainNode.gain.value=1;
     gainNode.connect(context.destination); gainNode.connect(audioDestination);
     audioSource=context.createBufferSource(); audioSource.buffer=audioBuffer; audioSource.connect(gainNode);
